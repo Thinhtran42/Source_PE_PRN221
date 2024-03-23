@@ -35,7 +35,7 @@ namespace PRN221PE_SP24_TrialTest_SE160233_RazorPage.Pages.Account
                     HttpContext.Session.SetString("UserId", user.AccountId.ToString());
                     HttpContext.Session.SetString("UserName", user.FullName);
                     HttpContext.Session.SetString("UserRole", (user.Role == 1 ? "ADMIN" : "STAFF"));
-                    return RedirectToPage("../Index");
+                    return RedirectToPage("../EyeGlassPage/Index");
                 }
                 else
                 {
@@ -46,7 +46,6 @@ namespace PRN221PE_SP24_TrialTest_SE160233_RazorPage.Pages.Account
             else
             {
                 ErrorMessage = "Invalid login";
-                //ModelState.AddModelError(string.Empty, "Invalid login");
             }
             return Page();
         }

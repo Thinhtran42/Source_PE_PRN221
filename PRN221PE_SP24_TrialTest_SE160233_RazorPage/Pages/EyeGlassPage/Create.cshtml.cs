@@ -44,8 +44,17 @@ namespace PRN221PE_SP24_TrialTest_SE160233_RazorPage.Pages.EyeGlassPage
                 return Page();
             }
 
+            if (Eyeglass.EyeglassesName.Length < 10 || !Eyeglass.EyeglassesName.Split(' ').All(word => char.IsUpper(word[0]) || char.IsDigit(word[0]) || new[] { '@', '#', '$', '&', '(', ')' }.Contains(word[0])))
+            {
+                ModelState.AddModelError("Eyeglass.EyeglassesName", "Eyeglasses name must be at least 11 characters, each word must begin with a capital letter, a number, or a special character such as @, #, $, &, (, )");
+                ViewData["LensTypeId"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeId", "LensTypeId");
+                return Page();
+            }
+
+            Eyeglass.CreatedDate = DateTime.UtcNow;
             _unitOfWork.EyeglassRepository.Add(Eyeglass);
             _unitOfWork.SaveChanges();
+
             return RedirectToPage("./Index");
         }
     }

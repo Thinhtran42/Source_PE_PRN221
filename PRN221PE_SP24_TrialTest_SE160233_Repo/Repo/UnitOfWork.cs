@@ -16,15 +16,7 @@ namespace PRN221PE_SP24_TrialTest_SE160233_Repo.Repo
         private IGenericRepository<Eyeglass> eyeGlassRepository;
         private IGenericRepository<LensType> lensTypeRepository;
 
-        /*public UnitOfWork(PizzaStoreContext context)
-        {
-            this.context = context;
-            productRepository = new GenericRepository<Product>(context);
-            accountRepository = new GenericRepository<Account>(context);
-        }*/
-
         public UnitOfWork(Eyeglasses2024DBContext context)
-
         {
             _context = context;
         }

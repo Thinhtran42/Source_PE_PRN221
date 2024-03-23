@@ -40,7 +40,7 @@ namespace PRN221PE_SP24_TrialTest_SE160233_RazorPage.Pages.EyeGlassPage
                 (minPrice == null || eyeglass.Price >= minPrice) &&
                 (maxPrice == null || eyeglass.Price <= maxPrice) &&
                 (des == null || eyeglass.EyeglassesDescription.Contains(des)),
-            orderBy: null,
+            orderBy: eyeglassQuery => eyeglassQuery.OrderByDescending(eyeglass => eyeglass.CreatedDate),
             includeProperties: "LensType",
             pageIndex: PageIndex ?? 1,
             pageSize: 4

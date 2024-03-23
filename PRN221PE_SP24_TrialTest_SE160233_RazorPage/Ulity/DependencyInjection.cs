@@ -22,7 +22,7 @@ namespace PRN221PE_SP24_TrialTest_SE160233_RazorPage.Ulity
                  .SetBasePath(Directory.GetCurrentDirectory())
                         .AddJsonFile("appsettings.json", true, true)
                         .Build();
-            var strConn = config["ConnectionStrings:Eyeglasses"];
+            var strConn = config["ConnectionStrings:ConnString"];
 
             return strConn;
         }
