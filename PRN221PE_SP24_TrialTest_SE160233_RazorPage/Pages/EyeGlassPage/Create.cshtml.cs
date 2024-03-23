@@ -26,7 +26,8 @@ namespace PRN221PE_SP24_TrialTest_SE160233_RazorPage.Pages.EyeGlassPage
                 TempData["ErrorMessage"] = "You do not have permission to access this page.";
                 return RedirectToPage("/eyeglasspage/index");
             }
-            ViewData["LensTypeId"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeId", "LensTypeId");
+            //ViewData["LensTypeId"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeId", "LensTypeId");
+            ViewData["LensTypeName"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeName", "LensTypeName");
             return Page();
         }
 
@@ -40,14 +41,16 @@ namespace PRN221PE_SP24_TrialTest_SE160233_RazorPage.Pages.EyeGlassPage
             if (Eyeglass.Quantity < 0 || Eyeglass.Quantity > 999)
             {
                 ModelState.AddModelError("Eyeglass.Quantity", "Quantity must be >=0 and <= 999");
-                ViewData["LensTypeId"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeId", "LensTypeId");
+                //ViewData["LensTypeId"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeId", "LensTypeId");
+                ViewData["LensTypeName"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeName", "LensTypeName");
                 return Page();
             }
 
             if (Eyeglass.EyeglassesName.Length < 10 || !Eyeglass.EyeglassesName.Split(' ').All(word => char.IsUpper(word[0]) || char.IsDigit(word[0]) || new[] { '@', '#', '$', '&', '(', ')' }.Contains(word[0])))
             {
                 ModelState.AddModelError("Eyeglass.EyeglassesName", "Eyeglasses name must be at least 11 characters, each word must begin with a capital letter, a number, or a special character such as @, #, $, &, (, )");
-                ViewData["LensTypeId"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeId", "LensTypeId");
+                //ViewData["LensTypeId"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeId", "LensTypeId");
+                ViewData["LensTypeName"] = new SelectList(_unitOfWork.LensTypeRepository.GetAll(), "LensTypeName", "LensTypeName");
                 return Page();
             }
 
